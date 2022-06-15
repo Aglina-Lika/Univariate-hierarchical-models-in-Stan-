@@ -58,7 +58,7 @@ model {
     for (k1 in 2:4) {
         temp_betas1[k1] ~ normal(0.0, scale_betas1);
     }
-   sigma1 ~ cauchy(0, scale_sigmas);//i added it 
+   sigma1 ~ cauchy(0, scale_sigmas);
     y1 ~ normal(eta1, sigma1);
 }
  
