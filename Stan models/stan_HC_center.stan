@@ -7,14 +7,14 @@ data {
     int RE_ind1[2]; // vector with 2 elements
     vector[N1] y1; // the dependent variable 
     matrix[N1, 2] Z_1; // the design matrix of the random effects when we have raw variables 
-    matrix[n, ncx1] Xhc1; // the design matrix of the fixed part when we have centred variables 
+    matrix[n, ncx1] Xhc1; // the design matrix of the fixed part when we have raw variables 
     int ZrowsStart1[n];  // vector of n elements. This vector will have the position where is the first observation of each patient 
     int ZrowsEnd1[n]; // vector of n elements. This vector will have the position where is the last observation of each patient 
     matrix[2, N1] Zv1; // transpose design matrix of the random effects when we have raw variables 
     real<lower=0> scale_betas1; // real number. This will be the standard error of the prior distribution of the coefficients 
     real<lower=0> scale_sigmas; // real number. This will be the standard error of the prior distribution of the standard deviation of the error terms  
     real<lower=0> scale_diag_D; // real number. This will be the standard error of the prior distribution of the standard deviation of the random terms 
-    real<lower=0> lkj_shape; //real number. This will be the standard error of the prior distribution of the likelihood 
+    real<lower=0> lkj_shape; //real number. This will be the scale of the cholesky distribution
     matrix[n, 4] XhcC1; // the design matrix of the fixed part when we have centred variables 
     vector[2] means_Xhc1; // means of the raw variables in the fixed part 
     matrix[N1,2] Zc1; // the design matrix of the random part when we have centred variables
@@ -32,7 +32,7 @@ parameters {
 }
  
 transformed parameters {
-    vector[N1] eta1; // will include the expected values of the model 
+    vector[N1] eta1; // it will include the expected values of the model 
     matrix[n, n_RE] mu_u;
     for (i in 1:n) {
         mu_u[i, 1] = XhcC1[i, 1] * temp_betas1[1] + XhcC1[i, 3] * temp_betas1[3] + XhcC1[i, 4] * temp_betas1[4]; // it will give the mean
