@@ -11,7 +11,7 @@ library(splines)
 # we load the R script extractFrames_new. This R script creates each time 
 # the matrices required for the fitted model
 
-source("U://R codes modified//code for the new proposed model//extractFrames_new.R")
+source("E://stat paper 1//code for the new proposed model//extractFrames_new.R")
 
 # we define the parameters required 
 # N: the total number of subjects 
@@ -168,7 +168,7 @@ for (d in 1:100){
             
             # we paste the path of the stan codes and we save it with 
             # the bame file.stan
-            file.stan = paste0("V://Users//055609(A_Lika)//HC+NHC_models_simulations//stan codes new proposed 20-10-2020//stan_", optionHC, "_", scaling,".stan")
+            file.stan = paste0("E://stat paper 1//stan codes new proposed 20-10-2020//stan_", optionHC, "_", scaling,".stan")
            # we name as sim.name the result of the paste command
             # this will be used for the definition of the 
             # columns of the data frame summary.table  
@@ -233,7 +233,7 @@ for (d in 1:100){
     
               summary1 = as.data.frame(summary(fit, pars = c("betas1","sigma1","D","b"))$summary)
               # we save the summary table 
-              save(summary1, file = paste0("V://Users//055609(A_Lika)//HC+NHC_models_simulations//summary_tables_10000//summary_", sim.name, "_d", d, ".RData"))
+              save(summary1, file = paste0("E://stat paper 1//summary_", sim.name, "_d", d, ".RData"))
             }
             
             
@@ -299,7 +299,7 @@ for (d in 1:100){
               # we require the summary table of the parameters of the model
               summary1 = as.data.frame(summary(fit, pars = c("betas1","sigma1","D","b"))$summary)
               # we save the summary1 
-              save(summary1, file = paste0("V://Users//055609(A_Lika)//HC+NHC_models_simulations//summary_tables_10000//summary_", sim.name, "_d", d, ".RData"))
+              save(summary1, file = paste0("E://stat paper 1//summary_", sim.name, "_d", d, ".RData"))
             }
             
              ## We fit the HC model with raw variables 
@@ -337,7 +337,7 @@ for (d in 1:100){
                           control = list(max_treedepth = 20, adapt_delta = 0.95))
               
               summary1 = as.data.frame(summary(fit, pars = c("betas1","sigma1","D","b"))$summary)
-              save(summary1, file = paste0("V://Users//055609(A_Lika)//HC+NHC_models_simulations//summary_tables_10000//summary_", sim.name, "_d", d, ".RData"))
+              save(summary1, file = paste0("E://stat paper 1//summary_", sim.name, "_d", d, ".RData"))
             }
             
             
@@ -395,7 +395,7 @@ for (d in 1:100){
               # summary table of the parameters 
               summary1 = as.data.frame(summary(fit, pars = c("betas1","sigma1","D","b"))$summary)
              # we save the summary table 
-               save(summary1, file = paste0("V://Users//055609(A_Lika)//HC+NHC_models_simulations//summary_tables_10000//summary_", sim.name, "_d", d, ".RData"))
+               save(summary1, file = paste0("E://stat paper 1//summary_", sim.name, "_d", d, ".RData"))
             }
             
              
@@ -445,7 +445,7 @@ for (d in 1:100){
                           control = list(max_treedepth = 20, adapt_delta = 0.95))
               
               summary1 = as.data.frame(summary(fit, pars = c("betas1","sigma1","D","b"))$summary)
-              save(summary1, file = paste0("V://Users//055609(A_Lika)//HC+NHC_models_simulations//summary_tables_10000//summary_", sim.name, "_d", d, ".RData"))
+              save(summary1, file = paste0("E://stat paper 1//summary_", sim.name, "_d", d, ".RData"))
             }
             
             
@@ -485,7 +485,7 @@ for (d in 1:100){
                           control = list(max_treedepth = 20, adapt_delta = 0.95))
               
               summary1 = as.data.frame(summary(fit, pars = c("betas1","sigma1","D","b"))$summary)
-              save(summary1, file = paste0("V://Users//055609(A_Lika)//HC+NHC_models_simulations//summary_tables_10000//summary_", sim.name, "_d", d, ".RData"))
+              save(summary1, file = paste0("E://stat paper 1//summary_", sim.name, "_d", d, ".RData"))
             }
             
             
@@ -646,4 +646,6 @@ for (d in 1:100){
 }
 
 summary.table 
+
+save(summary.table, file = paste0("E://stat paper 1//sim_total_1_100", ".RData"))
 
